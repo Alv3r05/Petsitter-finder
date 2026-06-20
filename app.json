@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "PetSitter Finder",
+    "slug": "petsitter-finder",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "platforms": ["ios", "android", "web"],
+    "scheme": "petsitter-finder"
+  }
+}
