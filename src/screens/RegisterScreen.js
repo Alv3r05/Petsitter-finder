@@ -1,48 +1,59 @@
-import { View, TextInput, Button, StyleSheet } from 'react-native';
+import { useState } from 'react';
+import { StyleSheet } from 'react-native';
+import ScreenContainer from '../components/ScreenContainer';
+import AppInput from '../components/AppInput';
+import AppButton from '../components/AppButton';
+import { spacing } from '../theme';
 
 export default function RegisterScreen({ navigation }) {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+
   return (
-    <View style={styles.container}>
-      <TextInput
-        placeholder="Nombre completo"
-        style={styles.input}
+    <ScreenContainer style={styles.container}>
+      <AppInput
+        label="Nombre completo"
+        placeholder="Tu nombre"
+        value={name}
+        onChangeText={setName}
       />
-
-      <TextInput
-        placeholder="Correo"
-        style={styles.input}
+      <AppInput
+        label="Correo"
+        placeholder="correo@ejemplo.com"
+        value={email}
+        onChangeText={setEmail}
       />
-
-      <TextInput
-        placeholder="Contraseña"
+      <AppInput
+        label="Contraseña"
+        placeholder="Crea una contraseña"
+        value={password}
+        onChangeText={setPassword}
         secureTextEntry
-        style={styles.input}
       />
-
-      <TextInput
-        placeholder="Confirmar contraseña"
+      <AppInput
+        label="Confirmar contraseña"
+        placeholder="Repite tu contraseña"
+        value={confirmPassword}
+        onChangeText={setConfirmPassword}
         secureTextEntry
-        style={styles.input}
       />
 
-      <Button
-        title="Crear Cuenta"
+      <AppButton
+        title="Crear cuenta"
         onPress={() => navigation.navigate('Login')}
+        style={styles.button}
       />
-    </View>
+    </ScreenContainer>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     justifyContent: 'center',
-    padding: 30,
   },
-  input: {
-    borderWidth: 1,
-    padding: 15,
-    borderRadius: 10,
-    marginBottom: 20,
+  button: {
+    marginTop: spacing.sm,
   },
 });

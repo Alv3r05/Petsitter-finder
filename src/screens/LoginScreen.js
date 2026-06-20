@@ -1,37 +1,44 @@
-import { View, TextInput, Button, StyleSheet } from 'react-native';
+import { useState } from 'react';
+import { StyleSheet } from 'react-native';
+import ScreenContainer from '../components/ScreenContainer';
+import AppInput from '../components/AppInput';
+import AppButton from '../components/AppButton';
+import { spacing } from '../theme';
 
 export default function LoginScreen({ navigation }) {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
   return (
-    <View style={styles.container}>
-      <TextInput
-        placeholder="Correo"
-        style={styles.input}
+    <ScreenContainer style={styles.container}>
+      <AppInput
+        label="Correo"
+        placeholder="correo@ejemplo.com"
+        value={email}
+        onChangeText={setEmail}
       />
-
-      <TextInput
-        placeholder="Contraseña"
+      <AppInput
+        label="Contraseña"
+        placeholder="Ingresa tu contraseña"
+        value={password}
+        onChangeText={setPassword}
         secureTextEntry
-        style={styles.input}
       />
 
-      <Button
-        title="Ingresar"
-        onPress={() => navigation.navigate('Home')}
+      <AppButton
+        title="Iniciar sesión"
+        onPress={() => navigation.replace('Main')}
+        style={styles.button}
       />
-    </View>
+    </ScreenContainer>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     justifyContent: 'center',
-    padding: 30,
   },
-  input: {
-    borderWidth: 1,
-    padding: 15,
-    borderRadius: 10,
-    marginBottom: 20,
+  button: {
+    marginTop: spacing.sm,
   },
 });

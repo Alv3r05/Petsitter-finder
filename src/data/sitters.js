@@ -1,0 +1,32 @@
+export const sitters = [
+  {
+    id: 1,
+    name: 'María López',
+    district: 'Ate',
+    price: 20,
+    rating: 4.8,
+    experience: '3 años',
+    specialties: ['Perros', 'Gatos'],
+    verified: true,
+  },
+  {
+    id: 2,
+    name: 'Carlos Díaz',
+    district: 'La Molina',
+    price: 18,
+    rating: 4.6,
+    experience: '2 años',
+    specialties: ['Perros'],
+    verified: true,
+  },
+  {
+    id: 3,
+    name: 'Ana Torres',
+    district: 'San Borja',
+    price: 25,
+    rating: 4.9,
+    experience: '5 años',
+    specialties: ['Perros', 'Gatos', 'Aves'],
+    verified: true,
+  },
+];

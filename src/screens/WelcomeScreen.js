@@ -1,51 +1,72 @@
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
+import ScreenContainer from '../components/ScreenContainer';
+import AppButton from '../components/AppButton';
+import { colors, spacing, typography } from '../theme';
 
 export default function WelcomeScreen({ navigation }) {
   return (
-    <View style={styles.container}>
-      <Text style={styles.logo}>🐾</Text>
+    <ScreenContainer style={styles.container}>
+      <View style={styles.hero}>
+        <Text style={styles.logo}>🐾</Text>
+        <Text style={styles.title}>PetSitter Finder</Text>
+        <Text style={styles.tagline}>Tu mascota en las mejores manos.</Text>
+        <Text style={styles.subtitle}>
+          Encuentra cuidadores confiables para tu mascota con perfiles
+          verificados y seguimiento en tiempo real.
+        </Text>
+      </View>
 
-      <Text style={styles.title}>
-        PetSitter Finder
-      </Text>
-
-      <Text style={styles.subtitle}>
-        Encuentra cuidadores confiables para tu mascota.
-      </Text>
-
-      <Button
-        title="Iniciar Sesión"
-        onPress={() => navigation.navigate('Login')}
-      />
-
-      <View style={{ marginTop: 10 }} />
-
-      <Button
-        title="Registrarse"
-        onPress={() => navigation.navigate('Register')}
-      />
-    </View>
+      <View style={styles.actions}>
+        <AppButton
+          title="Iniciar sesión"
+          onPress={() => navigation.navigate('Login')}
+        />
+        <View style={styles.gap} />
+        <AppButton
+          title="Registrarse"
+          variant="outline"
+          onPress={() => navigation.navigate('Register')}
+        />
+      </View>
+    </ScreenContainer>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
+    justifyContent: 'space-between',
+  },
+  hero: {
     flex: 1,
     justifyContent: 'center',
-    padding: 30,
+    alignItems: 'center',
   },
   logo: {
     fontSize: 80,
-    textAlign: 'center',
+    marginBottom: spacing.md,
   },
   title: {
-    fontSize: 32,
-    fontWeight: 'bold',
+    ...typography.h1,
+    color: colors.text,
     textAlign: 'center',
   },
-  subtitle: {
-    fontSize: 18,
+  tagline: {
+    ...typography.bodyMedium,
+    color: colors.primary,
     textAlign: 'center',
-    marginVertical: 30,
+    marginTop: spacing.sm,
+  },
+  subtitle: {
+    ...typography.body,
+    color: colors.textMuted,
+    textAlign: 'center',
+    marginTop: spacing.lg,
+    lineHeight: 24,
+  },
+  actions: {
+    marginBottom: spacing.lg,
+  },
+  gap: {
+    height: spacing.sm,
   },
 });
